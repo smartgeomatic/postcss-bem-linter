@@ -40,6 +40,9 @@ module.exports = postcss.plugin('postcss-bem-linter', function(primaryOptions, s
 
       var ruleStartLine = rule.source.start.line;
       ranges.forEach(function(range) {
+        var sameOrigin = range.file === rule.source.input.file
+        // if another source return
+        if (!sameOrigin) return;
         if (ruleStartLine < range.start) return;
         if (range.end && ruleStartLine > range.end) return;
         checkRule(rule, range);
@@ -111,6 +114,7 @@ module.exports = postcss.plugin('postcss-bem-linter', function(primaryOptions, s
           defined: defined,
           start: commentStartLine,
           weakMode: directiveMatch[2] === WEAK_IDENT,
+          file: comment.source.input.file,
         });
       });
       return ranges;
