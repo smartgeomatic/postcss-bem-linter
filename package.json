@@ -1,12 +1,13 @@
 {
   "name": "postcss-bem-linter",
-  "version": "2.6.0",
+  "version": "2.7.1",
   "description": "A BEM linter for postcss",
   "files": [
     "index.js",
     "lib"
   ],
   "dependencies": {
+    "minimatch": "^3.0.3",
     "postcss": "^5.0.0",
     "postcss-resolve-nested-selector": "^0.1.1"
   },
